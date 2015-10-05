@@ -18,7 +18,7 @@
         (or (= expected actual)
             (js-equals expected actual))))
 
-(defn to-satisfy-message [result actual expected]
+(defn to-satisfy-message [result actual expected eq-testers]
   (let [actualText (str actual)
         actualText (if (= actualText "[object Object]")
                      (let [ks (js/goog.object.getKeys actual)
@@ -26,9 +26,9 @@
                        (into {} (map (fn [x y] [x y])
                                      ks vs)))
                      actualText)
-        notText (if (.-pass result) "Not " "")]
+        notText (str (if (.-pass result) "Not " "") expected)]
     (aset result "message"
-          (str "Expression: " ;;(trim-quote tactual)
+          (str "Expression: " eq-testers ;;(trim-quote tactual)
                "\n  Expected: " notText ;;(trim-quote texpected)
                "\n  Result: " actualText))))
 
@@ -36,7 +36,7 @@
   #js {:compare (fn [actual expected]
                   (let [result (js-obj)]
                     (aset result "pass" (to-satisfy-compare actual expected))
-                    (to-satisfy-message result actual expected)
+                    (to-satisfy-message result actual expected eq-testers)
                     result))})
 
 (js/beforeEach
