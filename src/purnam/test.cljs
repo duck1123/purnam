@@ -1,9 +1,6 @@
 (ns purnam.test
   (:require [purnam.test.common :refer [js-equals]]))
 
-(if-not (.-jasmine js/window)
-    (throw (ex-info "No Jasmine Framework Library Installed. Tests Cannot Proceed" {})))
-
 (defn trim-quote [s]
  (second (re-find #"^\'(.*)\'$" s)))
 
