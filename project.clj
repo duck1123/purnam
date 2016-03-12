@@ -26,4 +26,10 @@
                                    :pretty-print true}}]}
   :repack [{:type :clojure
             :levels 1
-            :path "src"}])
+            :path "src"}]
+  :repositories [["snapshots" {:url "http://artifactory.jiksnu.org/artifactory/libs-snapshot-local/"
+                               :username [:gpg :env/artifactory_username]
+                               :password [:gpg :env/artifactory_password]}]
+                 ["releases" {:url "http://artifactory.jiksnu.org/artifactory/libs-releases-local/"
+                              :username [:gpg :env/artifactory_username]
+                              :password [:gpg :env/artifactory_password]}]])
