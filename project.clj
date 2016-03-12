@@ -1,5 +1,5 @@
-(defproject im.chit/purnam "0.5.2"
-  :description "Language extensions for clojurescript"  
+(defproject net.kronkltd/purnam "0.5.3-SNAPSHOT"
+  :description "Language extensions for clojurescript"
   :url "http://www.github.com/purnam/purnam"
   :license {:name "The MIT License"
             :url "http://opensource.org/licencses/MIT"}
