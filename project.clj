@@ -27,9 +27,9 @@
   :repack [{:type :clojure
             :levels 1
             :path "src"}]
-  :repositories [["snapshots" {:url "http://artifactory.jiksnu.org/artifactory/libs-snapshot-local/"
-                               :username [:gpg :env/artifactory_username]
-                               :password [:gpg :env/artifactory_password]}]
-                 ["releases" {:url "http://artifactory.jiksnu.org/artifactory/libs-releases-local/"
-                              :username [:gpg :env/artifactory_username]
-                              :password [:gpg :env/artifactory_password]}]])
+  :repositories [["snapshots" {:url "http://repo.jiksnu.org/repository/maven-snapshots/"
+                               :username [:gpg :env/repo_username]
+                               :password [:gpg :env/repo_password]}]
+                 ["releases" {:url "http://repo.jiksnu.org/repository/maven-releases/"
+                              :username [:gpg :env/repo_username]
+                              :password [:gpg :env/repo_password]}]])
