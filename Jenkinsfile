@@ -25,7 +25,7 @@ stage('Unit Tests') {
                 sh 'lein midje'
             }
 
-            step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
+            junit 'target/surefire-reports/TEST-*.xml'
         }
     }
 }
