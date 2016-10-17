@@ -32,7 +32,7 @@ stage('Unit Tests') {
 
 stage('Generate Reports') {
     node('docker') {
-        buildImage.inside {
+        buildImage.inside('-u 1000:1000') {
             checkout scm
             sh 'lein doc'
             step([$class: 'JavadocArchiver', javadocDir: 'doc', keepAll: true])
@@ -44,7 +44,7 @@ stage('Generate Reports') {
 // TODO: Skip for features and PRs
 stage('Deploy Artifacts') {
     node('docker') {
-        buildImage.inside {
+        buildImage.inside('-u 1000:1000') {
             withCredentials([[$class: 'UsernamePasswordMultiBinding',
                                 credentialsId: 'repo-creds',
                                 usernameVariable: 'REPO_USERNAME', passwordVariable: 'REPO_PASSWORD']]) {
